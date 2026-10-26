@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #010b2e;
+}
+
+button {
+  font: inherit;
+}
+
+.container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #010b2e, #04195a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 24px 16px;
+  isolation: isolate;
+}
+
+.stars,
+.hearts {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.stars {
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 24px;
+  opacity: 0.8;
+  animation: floatHeart linear infinite;
+}
+
+.card {
+  z-index: 1;
+  width: 700px;
+  max-width: 100%;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+  animation: appear 0.5s ease both;
+}
+
+.eyebrow {
+  color: #c8d8ff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card h1 {
+  color: gold;
+  margin: 12px 0 20px;
+  font-size: clamp(26px, 5vw, 38px);
+}
+
+.card h2 {
+  margin: 24px 0 16px;
+  font-size: clamp(21px, 4vw, 28px);
+}
+
+.card h3 {
+  color: #ffbddb;
+  margin: 24px 0 16px;
+}
+
+.card p {
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+.progress {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #dbe5ff;
+  font-size: 13px;
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+button {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff4fa3, #c52b91);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 79, 163, 0.3);
+}
+
+button:focus-visible {
+  outline: 3px solid gold;
+  outline-offset: 4px;
+}
+
+.final {
+  color: gold;
+  font-weight: bold;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+    box-shadow: 0 0 12px white;
+  }
+}
+
+@keyframes floatHeart {
+  from {
+    transform: translateY(0) rotate(0);
+  }
+  to {
+    transform: translateY(-120vh) rotate(25deg);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  .button-group {
+    grid-template-columns: 1fr;
+  }
+
+  .heart {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
